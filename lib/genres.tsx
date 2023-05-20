@@ -1,6 +1,9 @@
+import { Atom, BookMarked, Brain, Hourglass, Wand2 } from "lucide-react";
+
 export interface Genre {
 	id: number;
 	name: string;
+	icon?: JSX.Element;
 }
 
 const genres: Genre[] = [
@@ -15,10 +18,12 @@ const genres: Genre[] = [
 	{
 		id: 3,
 		name: "Fantasy",
+		icon: <Wand2 />,
 	},
 	{
 		id: 4,
 		name: "Science Fiction",
+		icon: <Atom />,
 	},
 	{
 		id: 5,
@@ -27,10 +32,12 @@ const genres: Genre[] = [
 	{
 		id: 12,
 		name: "History",
+		icon: <Hourglass />,
 	},
 	{
 		id: 13,
 		name: "Philosophy",
+		icon: <Brain />,
 	},
 ];
 

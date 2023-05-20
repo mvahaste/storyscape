@@ -1,12 +1,12 @@
 import { Book, getDiscount } from "@/lib/books";
 import Image from "next/image";
-import { Badge } from "./badge";
 
-export function BookCard({ book }: { book: Book }) {
+export function BookCard({ book, topN }: { book: Book; topN?: number }) {
 	return (
 		<div className="flex flex-col">
 			<a className="font-medium hover:underline hover:cursor-pointer font-sans relative" href="">
 				{book.sale ? <DiscountTag price={book.price} sale={book.sale} /> : null}
+				{/* {topN ? <TopNTag n={topN} /> : null} */}
 				<Image src={book.cover} alt={book.title} width={512} height={512} className="aspect-[1/1.5] object-cover mb-1.5 shadow rounded-sm" />
 				<h3 className="line-clamp-2 text-base" title={book.title}>
 					{book.title}
@@ -44,4 +44,8 @@ const DiscountTag = ({ price, sale }: { price: number; sale: number }) => {
 			-{getDiscount(price, sale)}%
 		</span>
 	);
+};
+
+const TopNTag = ({ n }: { n: number }) => {
+	return <span className="text-sm font-medium absolute top-0 right-3 bg-yellow-400 py-1 px-2 rounded-b-lg shadow">#{n}</span>;
 };
