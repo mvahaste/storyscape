@@ -24,8 +24,8 @@ export default function Home() {
 			<section>
 				<SectionHeading text="Popular Books" font="serif" />
 				<BookGrid>
-					{getPopularBooks(5).map((book) => (
-						<BookCard book={book} key={book.id} />
+					{getPopularBooks(5).map((book, i) => (
+						<BookCard book={book} key={book.id} topN={i + 1} />
 					))}
 				</BookGrid>
 			</section>
