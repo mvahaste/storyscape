@@ -1,7 +1,7 @@
 import { BookCard } from "@/components/ui/book-card";
 import { BookGrid } from "@/components/ui/book-grid";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { books } from "@/lib/books";
+import { getAllBooks, getOnSaleBooks } from "@/lib/books";
 
 export default function Home() {
 	return (
@@ -11,7 +11,7 @@ export default function Home() {
 			<section>
 				<SectionHeading text="On Sale" font="serif" />
 				<BookGrid>
-					{books
+					{getOnSaleBooks(true)
 						.filter((book) => book.sale)
 						.map((book) => (
 							<BookCard book={book} key={book.id} />
@@ -22,7 +22,7 @@ export default function Home() {
 			<section>
 				<SectionHeading text="All Books" font="serif" />
 				<BookGrid>
-					{books.map((book) => (
+					{getAllBooks().map((book) => (
 						<BookCard book={book} key={book.id} />
 					))}
 				</BookGrid>

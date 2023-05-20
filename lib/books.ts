@@ -10,7 +10,7 @@ export interface Book {
     sale?: number; // Sale price
 }
 
-export const books: Book[] = [
+const books: Book[] = [
     {
         id: 1,
         title: "Killing Commendatore",
@@ -19,8 +19,7 @@ export const books: Book[] = [
         genre: "Fiction",
         cover: "/images/killing-commendatore.jpg",
         rating: 4.5,
-        price: 18.59,
-        sale: 12.99,
+        price: 18.59
     },
     {
         id: 2,
@@ -63,6 +62,7 @@ export const books: Book[] = [
         cover: "/images/the-sailor-who-fell-from-grace-with-the-sea.jpg",
         rating: 4.5,
         price: 15.29,
+        sale: 11.99,
     },
     {
         id: 6,
@@ -96,3 +96,27 @@ export const books: Book[] = [
         price: 16.99,
     },
 ];
+
+export function getBookById(id: number): Book | undefined {
+    return books.find((book) => book.id === id);
+}
+
+export function getAllBooks(): Book[] {
+    return books;
+}
+
+export function getDiscount(price: number, sale: number): number {
+    return sale ? Math.round(((price - sale) / price) * 100) : 0;
+}
+
+export function getOnSaleBooks(sortByDiscount: boolean = false): Book[] {
+    var onSaleBooks = books.filter((book) => book.sale)
+
+    if (!sortByDiscount) {
+        return onSaleBooks;
+    }
+
+    return onSaleBooks.sort((a, b) => {
+        return a.sale && b.sale ? (getDiscount(b.price, b.sale) - getDiscount(a.price, a.sale)): 0;
+    });
+}
