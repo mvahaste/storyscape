@@ -159,7 +159,7 @@ export function getAllBooks(): Book[] {
 }
 
 export function getPopularBooks(limit?: number): Book[] {
-    return books.filter((book) => popularBooks.includes(book.id)).slice(0, limit ? limit : undefined);
+    return books.filter((book) => popularBooks.includes(book.id)).slice(0, limit);
 }
 
 export function getDiscount(price: number, sale: number): number {
@@ -170,10 +170,10 @@ export function getOnSaleBooks(sortByDiscount: boolean = false, limit?: number):
     var onSaleBooks = books.filter((book) => book.sale)
 
     if (!sortByDiscount) {
-        return onSaleBooks.slice(0, limit ? limit : undefined);
+        return onSaleBooks.slice(0, limit);
     }
 
     return onSaleBooks.sort((a, b) => {
         return a.sale && b.sale ? (getDiscount(b.price, b.sale) - getDiscount(a.price, a.sale)): 0;
-    }).slice(0, limit ? limit : undefined);
+    }).slice(0, limit);
 }

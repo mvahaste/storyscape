@@ -1,3 +1,4 @@
+import { Footer } from "@/components/ui/footer";
 import { Header } from "@/components/ui/header";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
@@ -24,9 +25,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={`${inter.variable} ${merriweather.variable} min-h-screen pb-6`}>
+			<body className={`${inter.variable} ${merriweather.variable} min-h-screen transition-colors`}>
 				<Header />
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);

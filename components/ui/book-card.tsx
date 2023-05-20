@@ -1,16 +1,16 @@
-import { getDiscount } from "@/lib/books";
+import { Book, getDiscount } from "@/lib/books";
 import Image from "next/image";
 import { Badge } from "./badge";
 
-export function BookCard({ book }: { book: any }) {
+export function BookCard({ book }: { book: Book }) {
 	return (
 		<div className="flex flex-col">
 			<a className="font-medium hover:underline hover:cursor-pointer font-sans relative" href="">
 				{book.sale ? <DiscountTag price={book.price} sale={book.sale} /> : null}
 				<Image src={book.cover} alt={book.title} width={512} height={512} className="aspect-[1/1.5] object-cover mb-1.5 shadow rounded-sm" />
-				<h1 className="line-clamp-2 text-base" title={book.title}>
+				<h3 className="line-clamp-2 text-base" title={book.title}>
 					{book.title}
-				</h1>
+				</h3>
 			</a>
 			<a className="text-sm hover:underline font-sans line-clamp-1" href="" title={book.author}>
 				{book.author}
