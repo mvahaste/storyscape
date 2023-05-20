@@ -146,6 +146,17 @@ const books: Book[] = [
         rating: 4.5,
         price: 9.99,
     },
+    {
+        id: 14,
+        title: "No Longer Human",
+        author: "Osamu Dazai",
+        description: "",
+        genre: 1,
+        cover: "/images/no-longer-human.jpg",
+        rating: 4.5,
+        price: 11.99,
+        sale:2.49,
+    }
 ];
 
 const popularBooks: number[] = [2, 10, 4, 5, 8, 11];
