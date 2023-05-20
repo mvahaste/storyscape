@@ -1,9 +1,11 @@
 import { BookCard } from "@/components/ui/book-card";
 import { BookGrid } from "@/components/ui/book-grid";
 import { GenreCard } from "@/components/ui/genre-card";
+import { OfferBanner } from "@/components/ui/offer-banner";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getOnSaleBooks, getPopularBooks } from "@/lib/books";
 import { getPopularGenres } from "@/lib/genres";
+import Image from "next/image";
 
 export default function Home() {
 	return (
@@ -29,6 +31,7 @@ export default function Home() {
 					))}
 				</BookGrid>
 			</section>
+			<OfferBanner></OfferBanner>
 			<section>
 				<SectionHeading text="Popular Genres" font="serif" />
 				<div className="grid grid-cols-2 grid-rows-2 w-full md:mx-auto gap-2 md:gap-4">
