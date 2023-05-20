@@ -1,5 +1,5 @@
-import { Footer } from "@/components/ui/footer";
-import { Header } from "@/components/ui/header";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
 
