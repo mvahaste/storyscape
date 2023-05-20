@@ -4,7 +4,7 @@ This is a concept bookstore website built with Next.js and the shadcn/ui library
 
 ## Features
 
-- Explore a curated collection of captivating novels, timeless classics, and thought-provoking reads.
+- Explore a collection of captivating novels, timeless classics, and thought-provoking reads.
 - Engage with a user-friendly interface designed for a smooth browsing experience.
 - Navigate through different book categories and genres.
 - Search for specific books or authors using the integrated search functionality.
