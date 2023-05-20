@@ -12,7 +12,7 @@ export function BookCard({ book }: { book: any }) {
 					{book.title}
 				</h1>
 			</a>
-			<a className="text-sm hover:underline font-sans" href="" title={book.author}>
+			<a className="text-sm hover:underline font-sans line-clamp-1" href="" title={book.author}>
 				{book.author}
 			</a>
 			<Price price={book.price} sale={book.sale} />
