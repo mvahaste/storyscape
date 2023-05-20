@@ -1,7 +1,8 @@
-import { BookCard } from "@/components/ui/book-card";
-import { BookGrid } from "@/components/ui/book-grid";
-import { GenreCard } from "@/components/ui/genre-card";
-import { OfferBanner } from "@/components/ui/offer-banner";
+import { BookCard } from "@/components/ui/grids/book-card";
+import { BookGrid } from "@/components/ui/grids/book-grid";
+import { GenreCard } from "@/components/ui/grids/genre-card";
+import { GenreGrid } from "@/components/ui/grids/genre-grid";
+import { GiftCardOffer } from "@/components/ui/offers/gift-card-offer";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getOnSaleBooks, getPopularBooks } from "@/lib/books";
 import { getPopularGenres } from "@/lib/genres";
@@ -31,16 +32,15 @@ export default function Home() {
 					))}
 				</BookGrid>
 			</section>
-			<OfferBanner>
-				<p>Offer</p>
-			</OfferBanner>
+			<GiftCardOffer />
+			{/* Popular genres */}
 			<section>
 				<SectionHeading text="Popular Genres" font="serif" />
-				<div className="grid grid-cols-2 grid-rows-2 w-full md:mx-auto gap-2 md:gap-4">
+				<GenreGrid>
 					{getPopularGenres(4).map((genre) => (
 						<GenreCard genre={genre} key={genre.id} />
 					))}
-				</div>
+				</GenreGrid>
 			</section>
 		</main>
 	);
