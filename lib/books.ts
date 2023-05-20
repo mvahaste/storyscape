@@ -3,11 +3,11 @@ export interface Book {
     title: string;
     author: string;
     description: string;
-    genre: string;
+    genre: number;
     cover: string;
     rating: number;
-    price: number; // Normal price
-    sale?: number; // Sale price
+    price: number;
+    sale?: number;
 }
 
 const books: Book[] = [
@@ -16,7 +16,7 @@ const books: Book[] = [
         title: "Killing Commendatore",
         author: "Haruki Murakami",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/killing-commendatore.jpg",
         rating: 4.5,
         price: 18.59
@@ -26,29 +26,28 @@ const books: Book[] = [
         title: "Kafka on the Shore",
         author: "Haruki Murakami",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/kafka-on-the-shore.jpg",
         rating: 4.5,
         price: 11.99,
         sale: 9.99,
     },
     {
-        id: 3,
-        title: "Pachinko",
-        author: "Min Jin Lee",
+        id: 10,
+        title: "The Elephant Vanishes",
+        author: "Haruki Murakami",
         description: "",
-        genre: "Fiction",
-        cover: "/images/pachinko.jpg",
+        genre: 1,
+        cover: "/images/the-elephant-vanishes.jpg",
         rating: 4.5,
-        price: 10.99,
-        sale: 8.99,
+        price: 11.99,
     },
     {
         id: 4,
         title: "Runaway Horses",
         author: "Yukio Mishima",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/runaway-horses.jpg",
         rating: 4.5,
         price: 16.99,
@@ -59,7 +58,7 @@ const books: Book[] = [
         title: "The Sailor Who Fell from Grace with the Sea",
         author: "Yukio Mishima",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/the-sailor-who-fell-from-grace-with-the-sea.jpg",
         rating: 4.5,
         price: 15.29,
@@ -70,7 +69,7 @@ const books: Book[] = [
         title: "A Wild Sheep Chase",
         author: "Haruki Murakami",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/a-wild-sheep-chase.jpg",
         rating: 4.5,
         price: 11.99,
@@ -80,7 +79,7 @@ const books: Book[] = [
         title: "Spring Snow",
         author: "Yukio Mishima",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/spring-snow.jpg",
         rating: 4.5,
         price: 16.99,
@@ -91,28 +90,29 @@ const books: Book[] = [
         title: "Temple of Dawn",
         author: "Yukio Mishima",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/temple-of-dawn.jpg",
         rating: 4.5,
         price: 16.99,
+    },
+    {
+        id: 3,
+        title: "Pachinko",
+        author: "Min Jin Lee",
+        description: "",
+        genre: 1,
+        cover: "/images/pachinko.jpg",
+        rating: 4.5,
+        price: 10.99,
+        sale: 8.99,
     },
     {
         id: 9,
         title: "The Wind-Up Bird Chronicle",
         author: "Haruki Murakami",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/the-wind-up-bird-chronicle.jpg",
-        rating: 4.5,
-        price: 11.99,
-    },
-    {
-        id: 10,
-        title: "The Elephant Vanishes",
-        author: "Haruki Murakami",
-        description: "",
-        genre: "Fiction",
-        cover: "/images/the-elephant-vanishes.jpg",
         rating: 4.5,
         price: 11.99,
     },
@@ -121,7 +121,7 @@ const books: Book[] = [
         title: "Meditations",
         author: "Marcus Aurelius",
         description: "",
-        genre: "Philosophy",
+        genre: 13,
         cover: "/images/meditations.jpg",
         rating: 4.5,
         price: 9.99,
@@ -131,7 +131,7 @@ const books: Book[] = [
         title: "The Communist Manifesto",
         author: "Karl Marx",
         description: "",
-        genre: "Philosophy",
+        genre: 13,
         cover: "/images/the-communist-manifesto.jpg",
         rating: 4.5,
         price: 11.99,
@@ -141,12 +141,14 @@ const books: Book[] = [
         title: "1984",
         author: "George Orwell",
         description: "",
-        genre: "Fiction",
+        genre: 1,
         cover: "/images/1984.jpg",
         rating: 4.5,
         price: 9.99,
     },
 ];
+
+const popularBooks: number[] = [2, 10, 4, 5, 8, 11];
 
 export function getBookById(id: number): Book | undefined {
     return books.find((book) => book.id === id);
@@ -156,18 +158,22 @@ export function getAllBooks(): Book[] {
     return books;
 }
 
+export function getPopularBooks(limit?: number): Book[] {
+    return books.filter((book) => popularBooks.includes(book.id)).slice(0, limit ? limit : undefined);
+}
+
 export function getDiscount(price: number, sale: number): number {
     return sale ? Math.round(((price - sale) / price) * 100) : 0;
 }
 
-export function getOnSaleBooks(sortByDiscount: boolean = false): Book[] {
+export function getOnSaleBooks(sortByDiscount: boolean = false, limit?: number): Book[] {
     var onSaleBooks = books.filter((book) => book.sale)
 
     if (!sortByDiscount) {
-        return onSaleBooks;
+        return onSaleBooks.slice(0, limit ? limit : undefined);
     }
 
     return onSaleBooks.sort((a, b) => {
         return a.sale && b.sale ? (getDiscount(b.price, b.sale) - getDiscount(a.price, a.sale)): 0;
-    });
+    }).slice(0, limit ? limit : undefined);
 }
