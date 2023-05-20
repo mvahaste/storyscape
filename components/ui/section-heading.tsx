@@ -1,11 +1,10 @@
-import { cva } from "class-variance-authority";
-
 export function SectionHeading({ text, font }: { text: string; font: "sans" | "serif" }) {
 	return (
-		<div className="flex gap-3 items-center mb-4">
-			<div className="grow h-px bg-black mt-1"></div>
-			<h2 className={`text-2xl text-black font-${font}`}>{text}</h2>
-			<div className="grow h-px bg-black mt-1"></div>
+		<div className="flex gap-3 items-baseline mb-3 md:mb-4 justify-between ">
+			<h2 className={`text-2xl md:text-3xl font-medium font-${font}`}>{text}</h2>
+			<a href="" className={`font-medium text-base md:text-lg hover:underline font-${font}`} title={`See all ${text.toLowerCase()}`}>
+				See all
+			</a>
 		</div>
 	);
 }
