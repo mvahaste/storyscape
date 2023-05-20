@@ -12,8 +12,8 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ["var(--font-montserrat)", "sans-serif"],
-				serif: ["var(--font-playfair)", "serif"],
+				sans: ["var(--font-sans)", "sans-serif"],
+				serif: ["var(--font-serif)", "serif"],
 			},
 			colors: {
 				"warm-taupe": "#9C7E67",
