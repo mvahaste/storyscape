@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={`${montserrat.variable} ${playfairDisplay.variable} min-h-screen`}>
+			<body className={`${montserrat.variable} ${playfairDisplay.variable} min-h-screen pb-6`}>
 				<Header />
 				{children}
 			</body>

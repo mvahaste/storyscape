@@ -16,6 +16,11 @@ module.exports = {
 				serif: ["var(--font-playfair)", "serif"],
 			},
 			colors: {
+				"warm-taupe": "#9C7E67",
+				"soft-ivory": "#F8F5F2",
+				"muted-sage": "#A8B09C",
+				"dusty-rose": "#D8A5A5",
+				"rich-amber": "#E7A74E",
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
