@@ -31,7 +31,9 @@ export default function Home() {
 					))}
 				</BookGrid>
 			</section>
-			<OfferBanner></OfferBanner>
+			<OfferBanner>
+				<p>Offer</p>
+			</OfferBanner>
 			<section>
 				<SectionHeading text="Popular Genres" font="serif" />
 				<div className="grid grid-cols-2 grid-rows-2 w-full md:mx-auto gap-2 md:gap-4">
