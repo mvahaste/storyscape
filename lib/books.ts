@@ -1,15 +1,3 @@
-// export interface Book {
-//     id: number;
-//     title: string;
-//     authors: number[];
-//     description: string;
-//     genre: number;
-//     cover: string;
-//     rating: number;
-//     price: number;
-//     sale?: number;
-// }
-
 import { Author, getAuthorById } from "./authors";
 
 export class Book {
