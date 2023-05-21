@@ -91,7 +91,7 @@ const Price = ({ price, sale }: { price: number; sale?: number }): any => {
  */
 const DiscountTag = ({ price, sale }: { price: number; sale: number }) => {
 	return (
-		<span className="absolute top-0 left-0 py-1 px-2 bg-[#a12649] rounded-br-xl rounded-tl-[calc(var(--radius)-5px)] text-sm font-semibold font-sans text-white shadow">
+		<span className="absolute top-0 left-0 py-1 px-2 bg-accent rounded-br-xl rounded-tl-[calc(var(--radius)-5px)] text-sm font-semibold font-sans text-accent-foreground shadow">
 			-{getDiscount(price, sale)}%
 		</span>
 	);
