@@ -43,7 +43,7 @@ export default function Home() {
 					))}
 				</BookGrid>
 			</section>
-			<GiftCardOffer />
+			<GiftCardOffer href="gift-card" />
 			{/* Popular genres */}
 			<section>
 				<SectionHeading text="Popular Genres" font="serif" href="browse?category=genres" />

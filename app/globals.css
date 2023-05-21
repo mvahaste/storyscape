@@ -28,6 +28,8 @@
 		--accent: 343 62% 39%;
 		--accent-foreground: 42 100% 97%;
 
+		--gift-card-background: 340, 56%, 25%; /* This looks nice */
+
 		--destructive: 6 100% 44%;
 		--destructive-foreground: 30 50% 54%;
 
