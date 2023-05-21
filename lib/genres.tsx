@@ -1,4 +1,4 @@
-import { Atom, BookMarked, Brain, Hourglass, Wand2 } from "lucide-react";
+import { Atom, Brain, Hourglass, Wand2 } from "lucide-react";
 
 export interface Genre {
 	id: number;
@@ -43,14 +43,29 @@ const genres: Genre[] = [
 
 const popular = [1, 2, 3, 13];
 
+/**
+ * Get all genres
+ * @param limit the maximum number of genres to return
+ * @returns array of genres
+ */
 export function getGenres(limit?: number): Genre[] {
 	return genres.slice(0, limit);
 }
 
+/**
+ * Get popular genres
+ * @param limit the maximum number of genres to return
+ * @returns array of genres
+ */
 export function getPopularGenres(limit?: number): Genre[] {
 	return genres.filter((g) => popular.indexOf(g.id) !== -1).slice(0, limit);
 }
 
+/**
+ * Get a genre by its ID
+ * @param id the genre ID
+ * @returns the genre
+ */
 export function getGenre(id: number): Genre | undefined {
 	return genres.find((g) => g.id === id);
 }
