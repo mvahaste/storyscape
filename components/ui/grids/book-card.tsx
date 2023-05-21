@@ -5,7 +5,7 @@ export function BookCard({ book, topN }: { book: Book; topN?: number }) {
 	return (
 		<div className="flex flex-col">
 			<a className="font-medium hover:underline hover:cursor-pointer font-sans relative" href="">
-				{book.sale ? <DiscountTag price={book.price} sale={book.sale} /> : null}
+				{book.sale && <DiscountTag price={book.price} sale={book.sale} />}
 				{/* {topN ? <TopNTag n={topN} /> : null} */}
 				<Image src={book.cover} alt={book.title} width={512} height={512} className="aspect-[1/1.5] object-cover mb-1.5 shadow rounded-sm" />
 				<h3 className="line-clamp-2 text-base" title={book.title}>
