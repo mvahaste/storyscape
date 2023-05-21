@@ -1,182 +1,276 @@
-export interface Book {
+// export interface Book {
+//     id: number;
+//     title: string;
+//     authors: number[];
+//     description: string;
+//     genre: number;
+//     cover: string;
+//     rating: number;
+//     price: number;
+//     sale?: number;
+// }
+
+import { Author, getAuthorById } from "./authors";
+
+export class Book {
     id: number;
     title: string;
-    author: string;
+    authors: number[];
     description: string;
     genre: number;
     cover: string;
     rating: number;
     price: number;
     sale?: number;
+
+    constructor(
+        id: number,
+        title: string,
+        authors: number[],
+        description: string,
+        genre: number,
+        cover: string,
+        rating: number,
+        price: number,
+        sale?: number,
+    ) {
+        this.id = id;
+        this.title = title;
+        this.authors = authors;
+        this.description = description;
+        this.genre = genre;
+        this.cover = cover;
+        this.rating = rating;
+        this.price = price;
+        this.sale = sale;
+    }
+
+    /**
+     * Get the authors of the book.
+     * @returns array of authors
+     */
+    getAuthors(): Author[] {
+        return this.authors.map((authorId) => {
+            const author = getAuthorById(authorId);
+
+            if (!author) {
+                throw new Error(`Author with ID ${authorId} not found`);
+            }
+
+            return author;
+        });
+    }
+
+    /**
+     * Get the discount percentage of the book.
+     * @returns discount percentage
+     */
+    getDiscount(): number {
+        return this.sale ? Math.round(((this.price - this.sale) / this.price) * 100) : 0;
+    }
 }
 
+
 const books: Book[] = [
-    {
-        id: 1,
-        title: "Killing Commendatore",
-        author: "Haruki Murakami",
-        description: "",
-        genre: 1,
-        cover: "/images/books/killing-commendatore.jpg",
-        rating: 4.5,
-        price: 18.59
-    },
-    {
-        id: 2,
-        title: "Kafka on the Shore",
-        author: "Haruki Murakami",
-        description: "",
-        genre: 1,
-        cover: "/images/books/kafka-on-the-shore.jpg",
-        rating: 4.5,
-        price: 11.99,
-        sale: 9.99,
-    },
-    {
-        id: 10,
-        title: "The Elephant Vanishes",
-        author: "Haruki Murakami",
-        description: "",
-        genre: 1,
-        cover: "/images/books/the-elephant-vanishes.jpg",
-        rating: 4.5,
-        price: 11.99,
-    },
-    {
-        id: 4,
-        title: "Runaway Horses",
-        author: "Yukio Mishima",
-        description: "",
-        genre: 1,
-        cover: "/images/books/runaway-horses.jpg",
-        rating: 4.5,
-        price: 16.99,
-        sale: 12.59,
-    },
-    {
-        id: 5,
-        title: "The Sailor Who Fell from Grace with the Sea",
-        author: "Yukio Mishima",
-        description: "",
-        genre: 1,
-        cover: "/images/books/the-sailor-who-fell-from-grace-with-the-sea.jpg",
-        rating: 4.5,
-        price: 15.29,
-        sale: 11.99,
-    },
-    {
-        id: 6,
-        title: "A Wild Sheep Chase",
-        author: "Haruki Murakami",
-        description: "",
-        genre: 1,
-        cover: "/images/books/a-wild-sheep-chase.jpg",
-        rating: 4.5,
-        price: 11.99,
-    },
-    {
-        id: 7,
-        title: "Spring Snow",
-        author: "Yukio Mishima",
-        description: "",
-        genre: 1,
-        cover: "/images/books/spring-snow.jpg",
-        rating: 4.5,
-        price: 16.99,
-        sale: 12.99,
-    },
-    {
-        id: 8,
-        title: "The Temple of Dawn",
-        author: "Yukio Mishima",
-        description: "",
-        genre: 1,
-        cover: "/images/books/the-temple-of-dawn.jpg",
-        rating: 4.5,
-        price: 16.99,
-    },
-    {
-        id: 3,
-        title: "Pachinko",
-        author: "Min Jin Lee",
-        description: "",
-        genre: 1,
-        cover: "/images/books/pachinko.jpg",
-        rating: 4.5,
-        price: 10.99,
-        sale: 8.99,
-    },
-    {
-        id: 9,
-        title: "The Wind-Up Bird Chronicle",
-        author: "Haruki Murakami",
-        description: "",
-        genre: 1,
-        cover: "/images/books/the-wind-up-bird-chronicle.jpg",
-        rating: 4.5,
-        price: 11.99,
-    },
-    {
-        id: 11,
-        title: "Meditations",
-        author: "Marcus Aurelius",
-        description: "",
-        genre: 13,
-        cover: "/images/books/meditations.jpg",
-        rating: 4.5,
-        price: 9.99,
-    },
-    {
-        id: 12,
-        title: "The Communist Manifesto",
-        author: "Karl Marx",
-        description: "",
-        genre: 13,
-        cover: "/images/books/the-communist-manifesto.jpg",
-        rating: 4.5,
-        price: 11.99,
-    },
-    {
-        id: 13,
-        title: "1984",
-        author: "George Orwell",
-        description: "",
-        genre: 1,
-        cover: "/images/books/1984.jpg",
-        rating: 4.5,
-        price: 9.99,
-    },
-    {
-        id: 14,
-        title: "No Longer Human",
-        author: "Osamu Dazai",
-        description: "",
-        genre: 1,
-        cover: "/images/books/no-longer-human.jpg",
-        rating: 4.5,
-        price: 11.99,
-        sale:2.49,
-    }
+    new Book(
+        1,
+        "Killing Commendatore",
+        [1],
+        "",
+        1,
+        "/images/books/killing-commendatore.jpg",
+        4.5,
+        18.59
+    ),
+    new Book(
+        2,
+        "Kafka on the Shore",
+        [1],
+        "",
+        1,
+        "/images/books/kafka-on-the-shore.jpg",
+        4.5,
+        11.99,
+        9.99
+    ),
+    new Book(
+        10,
+        "The Elephant Vanishes",
+        [1],
+        "",
+        1,
+        "/images/books/the-elephant-vanishes.jpg",
+        4.5,
+        11.99
+    ),
+    new Book(
+        4,
+        "Runaway Horses",
+        [2],
+        "",
+        1,
+        "/images/books/runaway-horses.jpg",
+        4.5,
+        16.99,
+        12.59
+    ),
+    new Book(
+        5,
+        "The Sailor Who Fell from Grace with the Sea",
+        [2],
+        "",
+        1,
+        "/images/books/the-sailor-who-fell-from-grace-with-the-sea.jpg",
+        4.5,
+        15.29,
+        11.99
+    ),
+    new Book(
+        6,
+        "A Wild Sheep Chase",
+        [1],
+        "",
+        1,
+        "/images/books/a-wild-sheep-chase.jpg",
+        4.5,
+        11.99
+    ),
+    new Book(
+        7,
+        "Spring Snow",
+        [2],
+        "",
+        1,
+        "/images/books/spring-snow.jpg",
+        4.5,
+        16.99,
+        12.99
+    ),
+    new Book(
+        8,
+        "The Temple of Dawn",
+        [2],
+        "",
+        1,
+        "/images/books/the-temple-of-dawn.jpg",
+        4.5,
+        16.99
+    ),
+    new Book(
+        3,
+        "Pachinko",
+        [3],
+        "",
+        1,
+        "/images/books/pachinko.jpg",
+        4.5,
+        10.99,
+        8.99
+    ),
+    new Book(
+        9,
+        "The Wind-Up Bird Chronicle",
+        [1],
+        "",
+        1,
+        "/images/books/the-wind-up-bird-chronicle.jpg",
+        4.5,
+        11.99
+    ),
+    new Book(
+        11,
+        "Meditations",
+        [4],
+        "",
+        13,
+        "/images/books/meditations.jpg",
+        4.5,
+        9.99
+    ),
+    new Book(
+        12,
+        "The Communist Manifesto",
+        [5, 8],
+        "",
+        13,
+        "/images/books/the-communist-manifesto.jpg",
+        4.5,
+        11.99,
+    ),
+    new Book(
+        13,
+        "1984",
+        [6],
+        "",
+        1,
+        "/images/books/1984.jpg",
+        4.5,
+        9.99
+    ),
+    new Book(
+        14,
+        "No Longer Human",
+        [7],
+        "",
+        1,
+        "/images/books/no-longer-human.jpg",
+        4.5,
+        11.99,
+        2.49
+        ),
 ];
 
 const popularBooks: number[] = [2, 10, 4, 5, 8, 11];
 
+/**
+ * Get book by its ID
+ * @param id ID of the book
+ * @returns Book object
+ */
 export function getBookById(id: number): Book | undefined {
     return books.find((book) => book.id === id);
 }
 
+/**
+ * Get books by author ID
+ * @param authorId ID of the author
+ * @returns Array of books
+ */
+export function getBooksByAuthorId(authorId: number): Book[] {
+    return books.filter((book) => book.authors.includes(authorId));
+}
+
+/**
+ * Get books by genre ID
+ * @param genreId ID of the genre
+ * @returns Array of books
+ */
+export function getBooksByGenreId(genreId: number): Book[] {
+    return books.filter((book) => book.genre === genreId);
+}
+
+/**
+ * Get all books
+ * @returns Array of books
+ */
 export function getAllBooks(): Book[] {
     return books;
 }
 
+/**
+ * Get popular books
+ * @param limit Limit of books to return
+ * @returns Array of books
+ */
 export function getPopularBooks(limit?: number): Book[] {
     return books.filter((book) => popularBooks.includes(book.id)).slice(0, limit);
 }
 
-export function getDiscount(price: number, sale: number): number {
-    return sale ? Math.round(((price - sale) / price) * 100) : 0;
-}
-
+/**
+ * Get books on sale
+ * @param limit Limit of books to return
+ * @returns Array of books
+ */
 export function getOnSaleBooks(sortByDiscount: boolean = false, limit?: number): Book[] {
     var onSaleBooks = books.filter((book) => book.sale)
 
@@ -185,6 +279,6 @@ export function getOnSaleBooks(sortByDiscount: boolean = false, limit?: number):
     }
 
     return onSaleBooks.sort((a, b) => {
-        return a.sale && b.sale ? (getDiscount(b.price, b.sale) - getDiscount(a.price, a.sale)): 0;
+        return a.sale && b.sale ? (b.getDiscount() - a.getDiscount()): 0;
     }).slice(0, limit);
 }
