@@ -1,33 +1,34 @@
 import Image from "next/image";
-import { Button } from "../button";
+// import { Button } from "../button";
 import { OfferBanner } from "./offer-banner";
 
-export function GiftCardOffer() {
+export function GiftCardOffer({ href }: { href: string }) {
 	return (
-		<OfferBanner className="flex flex-row justify-between items-center rounded-sm md:my-4">
+		<OfferBanner className="flex flex-row justify-between items-center rounded-sm md:my-4" href={href}>
+			{/* This should really be an image, if not all then the gift card part of it. */}
 			<div className="font-serif text-base sm:text-3xl md:text-4xl lg:text-5xl w-3/4 font-medium flex flex-col items-start justify-center gap-2 md:gap-4">
 				<h2>Surprise your loved ones with a gift card!</h2>
-				<Button variant="default" className="font-serif">
+				{/* <Button variant="default" className="font-serif hover:bg-[#631c34] bg-accent">
 					Learn more
-				</Button>
+				</Button> */}
 			</div>
 			<div className="h-5/6 w-auto aspect-[3/2] flex justify-center items-center relative">
 				<Image
-					src="/images/gift-card.jpg"
+					src="/images/gift-card-2.jpg"
 					width={512}
 					height={512}
 					alt=""
 					className="absolute rounded-lg md:rounded-xl aspect-[1.8/1] h-auto w-32 sm:w-32 md:w-52 rotate-[35deg] shadow right-0"
 				/>
 				<Image
-					src="/images/gift-card.jpg"
+					src="/images/gift-card-2.jpg"
 					width={512}
 					height={512}
 					alt=""
 					className="absolute rounded-lg md:rounded-xl aspect-[1.8/1] h-auto w-32 sm:w-32 md:w-52 rotate-[25deg] shadow right-0"
 				/>
 				<Image
-					src="/images/gift-card.jpg"
+					src="/images/gift-card-2.jpg"
 					width={512}
 					height={512}
 					alt=""
