@@ -75,7 +75,7 @@ const Price = ({ price, sale }: { price: number; sale?: number }): any => {
 	return (
 		<p className="text-sm font-sans">
 			<span className={sale ? "line-through text-xs sm:text-sm" : "font-medium"}>{priceFormat(price) + (sale ? "" : "€")}</span>{" "}
-			<span className={sale ? "font-semibold text-orange-600" : "hidden"}>{sale ? priceFormat(sale) + "€" : ""}</span>
+			<span className={sale ? "font-semibold text-[#a12649]" : "hidden"}>{sale ? priceFormat(sale) + "€" : ""}</span>
 		</p>
 	);
 };
