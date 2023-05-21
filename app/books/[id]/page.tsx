@@ -1,4 +1,3 @@
-// Page to display a book, for now just show the ID from the URL (using App router, next/navigation)
 "use client";
 
 import { useParams } from "next/navigation";
