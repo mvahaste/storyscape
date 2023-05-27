@@ -25,7 +25,7 @@ const authors: Author[] = [
  * @param id the ID of the author to find.
  * @returns author
  */
-export function getAuthorById(id: number): Author | undefined {
+export function getAuthorByID(id: number): Author | undefined {
     return authors.find((author) => author.id === id);
 }
 

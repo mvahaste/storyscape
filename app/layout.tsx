@@ -25,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={`${inter.variable} ${merriweather.variable} min-h-screen transition-colors relative pb-20`}>
+			<body className={`${inter.variable} ${merriweather.variable} min-h-screen transition-colors relative pb-20 font-sans`}>
 				<Header />
 				{children}
 				<Footer />

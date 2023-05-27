@@ -1,4 +1,5 @@
-import { Author, getAuthorById } from "./authors";
+import { Author, getAuthorByID } from "./authors";
+import { Genre, getGenreByID } from "./genres";
 
 export class Book {
     id: number;
@@ -38,15 +39,25 @@ export class Book {
      * @returns array of authors
      */
     getAuthors(): Author[] {
-        return this.authors.map((authorId) => {
-            const author = getAuthorById(authorId);
+        return this.authors.map((authorID) => {
+            const author = getAuthorByID(authorID);
 
             if (!author) {
-                throw new Error(`Author with ID ${authorId} not found`);
+                throw new Error(`Author with ID ${authorID} not found`);
             }
 
             return author;
         });
+    }
+
+    getGenre(): Genre {
+        const genre = getGenreByID(this.genre);
+
+        if (!genre) {
+            throw new Error(`Genre with ID ${this.id} not found`);
+        }
+
+        return genre;
     }
 
     /**

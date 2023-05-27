@@ -47,6 +47,6 @@ export function getPopularGenres(limit?: number): Genre[] {
  * @param id the genre ID
  * @returns the genre
  */
-export function getGenre(id: number): Genre | undefined {
+export function getGenreByID(id: number): Genre | undefined {
 	return genres.find((g) => g.id === id);
 }
